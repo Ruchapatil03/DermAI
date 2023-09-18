@@ -22,7 +22,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .outer{
-    height: 65vh;
+    height: 90vh;
     width: 60vw;
     display: flex;
     flex-direction: row;
@@ -37,9 +37,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh;
+    height: 85vh;
     width: 28vw;
-    margin:20vh 2vw 0 2vw;
+    margin:1vh 2vw 0 2vw;
 }
 .outer .formsection span{
     letter-spacing: 0.2vw;
@@ -54,14 +54,14 @@ body{
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-    margin: 2.5vh 2vh 4vh 7vh;
+    margin: 1vh 2vh 4vh 7vh;
 }
 .outer .formsection label{
     font-size: 2.5vh;
 	margin-left: 1vw;
 }
 .outer .formsection input{
-    margin-bottom: 3vh;
+    margin-bottom: 1vh;
 	width: 25vw;
 	border: none;
 	border-radius: 5vh;
@@ -70,7 +70,20 @@ body{
 	font-family: "", sans-serif;
 	font-weight: 400;
 	font-size: 1.1vw;
-	padding: 2vh 1vw;
+	padding: 1.5vh 1vw;
+	outline: none;
+}
+.outer .formsection select{
+    margin-bottom: 1vh;
+	width: 25vw;
+	border: none;
+	border-radius: 4vh;
+	background-color: rgba(255, 255, 255, 0.361);
+	color: black;
+	font-family: "", sans-serif;
+	font-weight: 400;
+	font-size: 1.1vw;
+	padding: 1.5vh 1vw;
 	outline: none;
 }
 
@@ -103,7 +116,7 @@ body{
 
 @media(orientation:portrait){
     .outer{
-        height: 65vh;
+        height: 90vh;
         width: 80vw;
         display: flex;
         flex-direction: column;
@@ -117,9 +130,9 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 50vh;
+        height: 90vh;
         width: 80vw;
-        margin: 4vh 8vw 2vh 0;
+        margin: 5vh 8vw 2vh 0;
     }
     .outer .formsection span{
         letter-spacing: 0.5vw;
@@ -132,7 +145,7 @@ body{
         flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
-        margin-top: 2.5vh;
+        margin-top: 1vh;
     }
     .outer .formsection label{
         font-size: 2.5vh;
@@ -148,7 +161,20 @@ body{
         font-family: "", sans-serif;
         font-weight: 400;
         font-size: 2vh;
-        padding: 2vh 1vw;
+        padding: 1vh 1vw;
+        outline: none;
+    }
+    .outer .formsection select{
+        margin-bottom: 2vh;
+        width: 64vw;
+        border: none;
+        border-radius: 5vh;
+        background-color: rgba(255, 255, 255, 0.361);
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 400;
+        font-size: 2vh;
+        padding: 1vh 1vw;
         outline: none;
     }
     

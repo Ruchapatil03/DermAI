@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import "../stylesheets/Login.css";
-import ig from "../assets/Login/dermimg.png";
+import ig from "../assets/Login/logimg.png";
 
 const Login = () => {
   return (
@@ -25,7 +25,10 @@ const Login = () => {
                         <input name="User ID" type="text" />
                     </div>
                     <center>
-                        <input type="submit" className='submit'/>
+                        <button >
+                        SUBMIT
+                        </button>
+                        {/* <input type="submit" className='submit'/> */}
                     </center>
                 </form>
             </div>
