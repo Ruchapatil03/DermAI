@@ -41,6 +41,7 @@ body{
     margin-top: 10vh;
     margin-bottom: 8vh;
     font-size: 5vh;
+    font-weight: 700;
 }
 .outer .formsection .form{
     display: flex;
@@ -48,10 +49,10 @@ body{
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-    margin: 2vh 2vh 4vh 7vh;
+    margin: 2.5vh 2vh 4vh 7vh;
 }
 .outer .formsection label{
-    font-size: 110%;
+    font-size: 2.5vh;
 	margin-left: 1vw;
 }
 .outer .formsection input{
@@ -115,9 +116,10 @@ body{
         margin: 2vh 8vw 2vh 0;
     }
     .outer .formsection span{
-        letter-spacing: 0.2vw;
+        letter-spacing: 0.5vw;
         margin: 0 0 10vh 12vw;
         font-size: 6vh;
+        font-weight: 500;
     }
     .outer .formsection .form{
         display: flex;
