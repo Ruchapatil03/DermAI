@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap'; // Import Bootstrap components
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { HiUserCircle } from "react-icons/hi";
 import { AiFillHome,AiFillMedicineBox } from "react-icons/ai";
@@ -8,6 +8,7 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { MdDocumentScanner } from "react-icons/md";
 import { Tooltip,Overlay } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
+import logo from "../assets/Dashboard/logo2.png";
 
 function Dashboard() {
 
@@ -43,7 +44,11 @@ function Dashboard() {
           height: '10%', // Set the height of the top section
         }}
       >
-        <Col md={6}>LOGO</Col>
+        <Col md={4} xs={12} sm={6}  >
+          <img src={logo} alt="" style={{
+            height:'9vh',width:'12vw',marginTop:'1.5vh',marginLeft:'1.3vw',borderRadius:'2vh'
+          }}/>
+        </Col>
         <Col
   md={6}
   style={{
@@ -79,7 +84,7 @@ function Dashboard() {
           backgroundColor: 'transparent', // Middle section background color
           height: '10%', // Set the height of the middle section
         }}>
-            <Col md={12}><h2 style={{textAlign:'center',marginTop:'0.5vh',fontWeight:'700'}}>Welcome to your Personalised Dashboard!</h2></Col>
+            <Col md={12}><h2 style={{textAlign:'center',fontWeight:'700'}}>Welcome to your Personalised Dashboard!</h2></Col>
         </Row>
         <Outlet/>
         <Row style={{
@@ -102,7 +107,7 @@ function Dashboard() {
         <Col md={12}>
           <div
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.9)', // Background color for user information
+              backgroundColor: ' rgba(255, 255, 255, 0.9) ', // Background color for user information
               padding: '20px',
               marginTop:'7vh',
               
@@ -145,24 +150,32 @@ function Dashboard() {
             </div>
             <div style={{marginLeft:'3vw',width:'27vw'}}>
             <h2 style={{fontWeight:'700',padding:'0.5vw'}}>Unmani Shinde</h2>
-            <h5 style={{paddingLeft:'0.5vw'}} ><b>EMail-ID:</b><u>usShinde_b21@el.vjti.ac.in</u></h5>
+            <h5 style={{paddingLeft:'0.5vw',wordBreak:'break-all'}} ><b>EMail-ID:</b><u>usShinde_b21@el.vjti.ac.in</u></h5>
             <h5 style={{paddingLeft:'0.5vw'}} ><b>Contact Number: </b>+9167792964</h5>
             <h5 style={{paddingLeft:'0.5vw'}} ><b>City: </b>Mumbai</h5>
             <h5 style={{paddingLeft:'0.5vw'}} ><b>State: </b>Maharashtra</h5>
+            <Container>
             <button
                 
                 style={{
                   alignSelf: 'flex-end',
-                  marginTop: '1rem',
+                  marginTop: '1vh',
                   backgroundColor: '#007bff', // button background color
                   color: '#fff', // Text color
                   border: 'none', // Remove border
                   fontWeight: 'bold', // Text boldness
                   boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)', // Button shadow
+                  height:'5vh',
+                  width:'14vw',
+                  borderRadius:'2vh',
+                  marginLeft:'1vw',
+                  marginBottom:'0.7vh'
                 }}
               >
                 Update Personal Info
               </button>
+            </Container>
+            
             </div>
           </div>
           
@@ -188,9 +201,9 @@ function Dashboard() {
     {/* //EEEEEE */}
     <h2 style={{fontWeight:'400',color:'black',padding:'0.5vw',marginBottom:'-2vh'}}>Account Details</h2>
     <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh',marginTop:'3vh'}} >Metamask Wallet Address: 0xAbCdEfGh123456...</h5>
-            <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >DermAI UserID: pat_01@dermAI</h5>
-            <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >Community Member Since: 18th September,2023</h5>
-            <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >Reward Points: X2</h5>
+      <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >DermAI UserID: pat_01@dermAI</h5>
+      <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >Community Member Since: 18th September,2023</h5>
+      <h5 style={{paddingLeft:'0.5vw',color:'black',marginBottom:'1vh'}} >Reward Points: X2</h5>
 
 </Col>
 
