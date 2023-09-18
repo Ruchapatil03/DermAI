@@ -6,10 +6,10 @@ import ParticleEffectButton from 'react-particle-effect-button'
 
 const Home = () => {
 
-    const [hidden , sethidde] = useState(true)
+    const [hidden , sethidden] = useState(true)
 
     useEffect(() =>{
-        sethidde(false)
+        sethidden(false)
     },[])
 
     return (
