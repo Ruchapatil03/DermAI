@@ -86,7 +86,10 @@ body{
 	padding: 1.5vh 1vw;
 	outline: none;
 }
-
+.outer .formsection option{
+    background-color: rgba(255, 255, 255, 0.361);
+	color: black;
+}
 .formsection .form button{
     cursor: pointer;
 	width: 15vw;
