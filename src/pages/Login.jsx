@@ -54,13 +54,13 @@ const Login = () => {
   return (
     <>
     <section className='sec1'>
-        <div className="outer">
-            <div className="formsection">
+        <div className="outer1">
+            <div className="formsection1">
                 <center>
                  <span>LOGIN</span>
                 </center>
                 
-                <form  className="form">
+                <form  className="form1">
 
                     <div>
                         <label>MetaMask ID:</label>
@@ -90,7 +90,7 @@ const Login = () => {
                     </center>
                 </form>
             </div>
-            <div className="imagecontent">
+            <div className="imagecontent1">
                 <img src={ig} alt="" /> 
             </div>
             
