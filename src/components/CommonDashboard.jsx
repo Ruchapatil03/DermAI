@@ -33,8 +33,6 @@ return(<div className="backgnd">
         <h2>Account Details: </h2>
         <h5>Metamask ID: 1234567890000</h5>
         <h5>User ID: 345678</h5>
-        <h5>Member since: 13th Oct 2023</h5>
-        <h5>Reward points: 5x</h5>
     </div>
 </div>
 </div>)

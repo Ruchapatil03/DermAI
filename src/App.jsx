@@ -15,6 +15,7 @@ import CommonDashboard from "./components/CommonDashboard";
 import PatientDashboard from "./components/PatientDashboard";
 import ProfessionalDashboard from "./components/ProfessionalDashboard";
 import GetDiagnosis from "./components/GetDiagnosis";
+import HelloWorld from "./components/helloworldtest";
 
 
 
@@ -41,6 +42,7 @@ function App() {
           </Route>
 
           <Route exact path="/test" element={<Test/>}></Route>
+          <Route exact path="/helloworld" element={<HelloWorld/>}></Route>
           
         </Routes>
       </Router>

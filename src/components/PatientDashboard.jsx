@@ -5,7 +5,7 @@ import Upload from "../pages/Upload";
 
 function PatientDashboard() {
 
-    const headings = ["Previous Diagnosis","DermAI Diagonosis"];
+    const headings = ["Previous Diagnosis","DermAI Diagnosis"];
     const emptyDescriptions = [`A comprehensive history of your past medical diagnoses.`,`A record of your past experiences with our platform's quick and precise AI-powered diagnosis. Click on the Test button to get your first Diagnosis!`]
 
     return(
