@@ -86,6 +86,7 @@
     border-radius: 20vh;
     object-fit: contain;
 }
+
 .mainprofile .backgnd .prof .profinfo{
     display: flex;
     flex-direction: column;
@@ -146,4 +147,101 @@
     margin-bottom: -5vh;
     cursor: pointer;
     transform: scale(1.5);
+}
+
+.mainprofile .heading .logout .logoutlogo{
+    color: white;
+    font-size: 2.5vh; 
+    transform: scale(1.5);
+    margin-right:4vw;
+    margin-left:-0.9vw;
+    margin-bottom:2vh
+}
+
+@media (orientation: portrait){
+    .mainprofile .backgnd .prof{
+        width: 46vw;
+        height: 60vh;
+        margin: 0 1vw 0 2vw;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 2vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 1vh 2vw 1vh 2vw;
+        flex-wrap: wrap;
+    }
+
+    .mainprofile .backgnd .prof .profphoto{
+        width: 35vw;
+        height: 35vw;
+        border-radius: 100%;
+        margin: 0;
+    }
+
+    .mainprofile .title h2{
+        font-size: 5vw;
+        padding: 10px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .mainprofile .heading .logout .button{
+        font-size: 2vh;
+        padding-right: 10vh;
+    }
+    .mainprofile .heading .logout .logoutlogo{
+        font-size: 2vh;
+        margin-left: -3vw;
+        margin-bottom: 2.3vh;
+        margin-right: 7vw;
+    }
+
+    .mainprofile .backgnd .prof .profinfo{
+        width: 90%;
+        justify-content: start;
+        padding-top: 4vh;
+        margin-left: 0;
+    }
+
+    .mainprofile .backgnd .prof .profinfo h5{
+        font-size: 2vw;
+    }
+
+    .mainprofile .backgnd .prof .profinfo h2{
+        width: 100%;
+        font-size: 5vw;
+        font-weight: 600;
+        margin-bottom: 1vh;
+    }
+
+    .mainprofile .backgnd .prof .profinfo .infoupdate{
+        font-size: 2vw;
+        width: 53%;
+    }
+
+    .mainprofile .backgnd .prof .profinfo center{
+        width: 100%;
+        margin-top: 1vh;
+    }
+
+    .mainprofile .backgnd .detaildisp h5{
+        font-size: 2vw; 
+    }
+
+    .mainprofile .backgnd .detaildisp h2{
+        font-size: 6vw; 
+        font-weight: 550;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 550px){
+    .mainprofile .backgnd .prof .profphoto{
+        width: 20vw;
+        height: 20vw;
+        border-radius: 100%;
+        margin: 0;
+    }
 }
