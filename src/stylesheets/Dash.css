@@ -251,3 +251,67 @@
         margin: 0;
     }
 }
+
+/* YourComponent.css */
+.mainprofile .bottomdiv {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* Media query for screens smaller than 768px */
+  @media (max-width: 768px) {
+    .mainprofile .bottomdiv {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center; /* Center buttons horizontally */
+    }
+  
+    /* Add any additional styling for smaller screens */
+    /* For example, you can change the button's font size */
+    .mainprofile .bottomdiv button {
+      font-size: 16px;
+    }
+  }
+  
+  /* Media query for screens larger than 768px */
+  @media (min-width: 769px) {
+    /* Add any additional styling for larger screens */
+    /* For example, you can change the button's padding */
+    .mainprofile .bottomdiv button {
+      padding: 10px 20px;
+    }
+  }
+  
+  /* YourComponent.css */
+.mainprofile .bottomdiv {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .button-container {
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .button-container.active {
+    background-color: #0f4a91; /* Add active state styling */
+  }
+  
+  .button-container button {
+    background-color: white;
+    border: none;
+    border-radius: 50%; /* Make the button circular */
+    width: 5vh;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 24px;
+  }
+  
+  .label {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  

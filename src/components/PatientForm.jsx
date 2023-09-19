@@ -4,7 +4,7 @@ import { Web3Storage } from 'web3.storage';
 import DermAIABI from "../ABI/RevisedABI.json"
 import Web3 from 'web3';
 
-const contractAddress = '0x3C16e7631DEa0789c4bB548C314DF212461F2CAb';
+const contractAddress = '0x47DD92CcBa70120AC0B8fF5d75d61a7E441D6F8c';
 
 function getAccessToken() {
   return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NTg0QzFjYjQ1QzczMTQwODQ3RjY2NjBkQ0Y5MzNjODNBM2NFMjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTUxMjAxNDc5MjEsIm5hbWUiOiJ1c2VyUHJvZmlsZVNJSCJ9.vVWHthR6rySB1W48_oO_vjHBF36_3Pm9ljHRIpZviDE";
