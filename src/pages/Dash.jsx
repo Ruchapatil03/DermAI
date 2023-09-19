@@ -17,7 +17,7 @@ const Dash = () => {
                     <button className='button'>
                         Logout
                     </button>
-                    <RiLogoutCircleRLine style={{color: 'white', fontSize: '2.5vh', transform: 'scale(1.5)',marginRight:'4vw',marginLeft:'-0.9vw',marginBottom:'2vh'}}/>        
+                    <RiLogoutCircleRLine className="logoutlogo"/>        
                 </div>    
             </div>
 
@@ -28,7 +28,7 @@ const Dash = () => {
             <div className="backgnd">
                 <div className="prof">
                     <div className="profphoto">
-                        <img src={logo} alt="" />
+                        {/* <img src={logo} alt="" /> */}
                     </div>
                     <div className="profinfo">
                         <h2>Rucha Patil</h2>
@@ -46,10 +46,10 @@ const Dash = () => {
                 <div className="detaildisp">
                     <div className="disp1">
                         <h2>Account Details: </h2>
-                        <h5>Metamask ID: 1234567890000</h5>
-                        <h5>User ID: 345678</h5>
-                        <h5>Member since: 13th Oct 2023</h5>
-                        <h5>Reward points: 5x</h5>
+                        <h5><b>Metamask ID:</b> 1234567890000</h5>
+                        <h5><b>User ID:</b> 345678</h5>
+                        <h5><b>Member since:</b> 13th Oct 2023</h5>
+                        <h5><b>Reward points:</b> 5x</h5>
                     </div>
                     <div className="disp2">
                         <h2>Account Details: </h2>
