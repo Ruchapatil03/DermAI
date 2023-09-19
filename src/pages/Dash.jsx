@@ -46,7 +46,7 @@ const Dash = () => {
 
 
   return (
-    <>
+    <div className='meow'>
     <section className="section1">
 
         <div className="mainprofile">
@@ -68,7 +68,7 @@ const Dash = () => {
             
             
 
-            <div className="bottomdiv">
+            <div className="bottomdiv" >
   {buttons.map((button, index) => (
     // Use conditional rendering to hide the button based on the current path
     (index === 1 && currentPath === 'professional') ||
@@ -88,7 +88,8 @@ const Dash = () => {
   style={{
     borderRadius: '50%', // Makes the button circular
     marginTop: activeButton === index ? '-3vh' : '0',
-    backgroundColor: index === activeButton ? 'white' : 'transparent',
+    backgroundColor: index === activeButton ? 'aliceblue' : 'transparent',
+    color:index===activeButton?'black':'aliceblue',
     width: '40px', // Set the desired width for the circular button
     height: '40px', // Set the desired height for the circular button
     display: 'flex',
@@ -111,7 +112,7 @@ const Dash = () => {
 
         </div>
     </section>
-    </>
+    </div>
   );
 }
 
