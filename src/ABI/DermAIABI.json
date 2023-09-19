@@ -1,0 +1,438 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_userid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_timestamp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_inputImage",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_inputSymptoms",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_diagnosis",
+				"type": "string"
+			}
+		],
+		"name": "createDiagnosis",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_doj",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userProfile",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userPFP",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.Roles",
+				"name": "_userRole",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_userProfessionalBio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userProfessionalInformation",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userResearchInterests",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.HealthcareCategory",
+				"name": "_userCategory",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_usermedicalhistory",
+				"type": "string"
+			}
+		],
+		"name": "createUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "userID",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "diagnosisID",
+				"type": "uint256"
+			}
+		],
+		"name": "NewDiagnosisAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "userID",
+				"type": "uint256"
+			}
+		],
+		"name": "UserCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DermAIDiagnosis",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "diagnosisID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "timestamp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "inputDiagnosisImage",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "inputSymptoms",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "diagnosis",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DermAIUsers",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "userID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "userProfile",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "userPFP",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.Roles",
+				"name": "userRole",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "userProfessionalBio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "userProfessionalInformation",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "userResearchInterests",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "userPreviousMedicalHistory",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.HealthcareCategory",
+				"name": "userCategory",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "dateofJoining",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "diagnosisCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_diagnosisID",
+				"type": "uint256"
+			}
+		],
+		"name": "getDiagnosisbyID",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getHealthcareProfessionalsCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPatientsCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTotalUsersCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_userid",
+				"type": "uint256"
+			}
+		],
+		"name": "getUserByID",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.Roles",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "enum DermAI.HealthcareCategory",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "userCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
