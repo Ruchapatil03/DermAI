@@ -138,12 +138,17 @@
     align-items: flex-start;
     padding: 1.6vh 2vw 1vh 3vw;
 }
-.mainprofile .bottomdiv{
+/* .mainprofile .bottomdiv{
     width: 30vw;
-    height: 6vh;
-    background-color: #09588a;
-    border-radius: 1vh;
-    margin-bottom: -5vh;
+    height: 5vh;
+    background-color: #1c3f62;
+    border-radius: 1vh 1vh 0 0;
+    margin-bottom: -3vh;
     cursor: pointer;
     transform: scale(1.5);
+    margin-top: auto;
+} */
+.mainprofile .bottomdiv button{
+    color: white;   
+    
 }
