@@ -1,0 +1,269 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_timestamp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_inputDiagnosisImage",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_inputSymptoms",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_diagnosis",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "patID",
+				"type": "uint256"
+			}
+		],
+		"name": "createDiagnosis",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_pfp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_details",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_prediag",
+				"type": "string"
+			}
+		],
+		"name": "createPatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_pfp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_details",
+				"type": "string"
+			}
+		],
+		"name": "createProfessional",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Diagnoses",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "diagnosisID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "timestamp",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "inputDiagnosisImage",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "inputSymptoms",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "diagnosis",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numDiagnoses",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numPatients",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numProfessionals",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Patients",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "patientID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "PFPHash",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "DetailsHash",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "PrePlatformDiagnosisHash",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Professionals",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "professionalID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "PFPHash",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "DetailsHash",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Dashboard from "./pages/Dashboard";
-
-
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Dash from "./pages/Dash";
+import CommonForm from "./components/CommonForm";
+import PatientForm from "./components/PatientForm";
+import HealthcareProfessionalForm from "./components/HealthcareProfessionalForm";
+
 
 function App() {
 
@@ -14,15 +16,19 @@ function App() {
     <div className="parent">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/dashboard" element={<Dashboard/>}></Route>
-          <Route path="/Login" element={<Login/>}></Route>
-          <Route path="/Signup" element={<Signup/>}></Route>
-          <Route path="/Dash" element={<Dash/>}></Route>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/dashboard" element={<Dashboard/>}></Route>
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Signup" element={<Signup />}>
+            <Route path="" element={<CommonForm />} />
+            <Route path="patient" element={<PatientForm />} />
+            <Route path="healthcare-professional" element={<HealthcareProfessionalForm />} />
+          </Route>
+          <Route exact path="/Dash" element={<Dash/>}></Route>
         </Routes>
       </Router>
     </div>
   )
 }
 
-export default App
+export default App;
