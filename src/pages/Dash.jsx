@@ -64,6 +64,8 @@ const Dash = () => {
             <h2>Welcome to your Personalised Dashboard!</h2>
             </div>
             <Outlet/>
+
+            
             
 
             <div className="bottomdiv">
@@ -83,11 +85,20 @@ const Dash = () => {
         }}
       >
         <button
-          style={{ marginTop: activeButton === index ? '-3vh' : '0',backgroundColor:index==activeButton?"white":'transparent' }}
-          
-        >
-          {button.icon}
-        </button>
+  style={{
+    borderRadius: '50%', // Makes the button circular
+    marginTop: activeButton === index ? '-3vh' : '0',
+    backgroundColor: index === activeButton ? 'white' : 'transparent',
+    width: '40px', // Set the desired width for the circular button
+    height: '40px', // Set the desired height for the circular button
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center', // Center the icon vertically within the circular button
+  }}
+>
+  {button.icon}
+</button>
+
         {activeButton === index && (
           <span className="label" style={{ fontWeight: '700', color: 'white', fontSize: 'small' }}>
             {button.label}
