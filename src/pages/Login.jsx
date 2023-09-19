@@ -1,8 +1,10 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
+
 import React,{useState,useEffect} from 'react';
 import "../stylesheets/Login.css";
 import ig from "../assets/Login/logimg.png";
 import Web3 from 'web3';
+
 import { Web3Storage } from 'web3.storage';
 
 
