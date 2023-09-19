@@ -10,9 +10,6 @@
 body{
     background: rgb(6,79,153);
     background: linear-gradient(36deg, rgba(6,79,153,0.9220938375350141) 30%, rgba(111,165,207,0.9192927170868347) 60%, rgba(195,233,251,0.9248949579831933) 86%);
-    /* background: rgb(195,233,251);
-    background: linear-gradient(36deg, rgba(195,233,251,0.9164915966386554) 30%, rgba(111,165,207,0.9697128851540616) 45%, rgba(6,79,153,0.9024859943977591) 66%); */
-    /* background-image: linear-gradient(24deg, rgba(169,232,219,1) 21%, rgba(1,132,169,1) 66%); */
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -21,7 +18,7 @@ body{
     width: 100vw;
     font-family: 'Poppins', sans-serif;
 }
-.outer{
+.outer1{
     height: 65vh;
     width: 60vw;
     display: flex;
@@ -33,35 +30,48 @@ body{
     border-radius: 2vh;
     color: #f9feff;
 }
-.outer .formsection{
+.outer1 .formsection1{
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 70vh;
     width: 28vw;
-    margin:20vh 2vw 0 2vw;
+    margin:15vh 2vw 0 4vw;
 }
-.outer .formsection span{
+.outer1 .formsection1 span{
     letter-spacing: 0.2vw;
     margin-top: 10vh;
     margin-bottom: 8vh;
     font-size: 5.5vh;
     font-weight: 600;
 }
-.outer .formsection .form{
+.outer1 .formsection1 .form{
     display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-    margin: 2.5vh 2vh 4vh 7vh;
+    margin: 1vh 2vh 4vh 7vh;
 }
-.outer .formsection label{
+.outer1 .formsection1 label{
     font-size: 2.5vh;
 	margin-left: 1vw;
 }
-.outer .formsection input{
-    margin-bottom: 3vh;
+.outer1 .formsection1 input{
+    margin-bottom: 1vh;
+	width: 25vw;
+	border: none;
+	border-radius: 5vh;
+	background-color: rgba(255, 255, 255, 0.361);
+	color: black;
+	font-family: "", sans-serif;
+	font-weight: 400;
+	font-size: 1.1vw;
+	padding: 2vh 1vw;
+	outline: none;
+}
+.outer1 .formsection1 select{
+    margin-bottom: 1vh;
 	width: 25vw;
 	border: none;
 	border-radius: 5vh;
@@ -74,7 +84,7 @@ body{
 	outline: none;
 }
 
-.formsection .form button{
+.formsection1 .form1 button{
     cursor: pointer;
 	width: 15vw;
 	height: 7vh;
@@ -88,21 +98,21 @@ body{
 }
 
 
-.outer .imagecontent{
+.outer1 .imagecontent1{
     height: 60vh;
     width: 30vw;
     margin: 9vh 3vw 0 0;
     display: block;
     
 }
-.outer .imagecontent img{
+.outer1 .imagecontent1 img{
     height: 50vh;
     width: 30vw;
     object-fit: contain;
 }
 
 @media(orientation:portrait){
-    .outer{
+    .outer1{
         height: 65vh;
         width: 80vw;
         display: flex;
@@ -110,10 +120,10 @@ body{
         align-items: center;
         justify-content: center;
     }
-    .outer .imagecontent{
+    .outer1 .imagecontent1{
         display: none;
     }
-    .outer .formsection{
+    .outer1 .formsection1{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -121,24 +131,24 @@ body{
         width: 80vw;
         margin: 4vh 8vw 2vh 0;
     }
-    .outer .formsection span{
+    .outer1 .formsection1 span{
         letter-spacing: 0.5vw;
         margin: 0 0 10vh 12vw;
         font-size: 5vh;
         font-weight: 500;
     }
-    .outer .formsection .form{
+    .outer1 .formsection1 .form1{
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
         margin-top: 2.5vh;
     }
-    .outer .formsection label{
+    .outer1 .formsection1 label{
         font-size: 2.5vh;
         margin-left: 1vw;
     }
-    .outer .formsection input{
+    .outer1 .formsection1 input{
         margin-bottom: 3vh;
         width: 64vw;
         border: none;
@@ -151,8 +161,20 @@ body{
         padding: 2vh 1vw;
         outline: none;
     }
-    
-    .formsection .form button{
+    .outer1 .formsection1 select{
+        margin-bottom: 3vh;
+        width: 64vw;
+        border: none;
+        border-radius: 5vh;
+        background-color: rgba(255, 255, 255, 0.361);
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 400;
+        font-size: 2vh;
+        padding: 2vh 1vw;
+        outline: none;
+    }
+    .formsection1 .form1 button{
         cursor: pointer;
         width: 40vw;
         height: 6vh;
