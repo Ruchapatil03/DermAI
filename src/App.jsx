@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Dash from "./pages/Dash";
+// eslint-disable-next-line no-unused-vars
 import Upload from "./pages/Upload";
 import CommonForm from "./components/CommonForm";
 import PatientForm from "./components/PatientForm";

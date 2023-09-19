@@ -7,7 +7,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+.sec1{
     background: rgb(6,79,153);
     background: linear-gradient(36deg, rgba(6,79,153,0.9220938375350141) 30%, rgba(111,165,207,0.9192927170868347) 60%, rgba(195,233,251,0.9248949579831933) 86%);
     background-size: cover;
