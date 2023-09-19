@@ -51,6 +51,7 @@
     text-align: center;
     font-size: 4vh;
     font-weight: 600;
+    margin-top: -4vh;
 }
 .mainprofile .backgnd{
     width: 96vw;
@@ -118,7 +119,7 @@
     backdrop-filter: blur(0px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    margin: 1vh 2vw 1vh 1vw;
+    margin: -6vh 2vw 1vh 1vw;
     border-radius: 2vh;
     display: flex;
     flex-direction: column;
@@ -141,10 +142,10 @@
 }
 .mainprofile .bottomdiv{
     width: 30vw;
-    height: 6vh;
+    height: vh;
     background-color: #09588a;
     border-radius: 1vh;
-    margin-bottom: -5vh;
+    margin-bottom: -6vh;
     cursor: pointer;
     transform: scale(1.5);
 }
@@ -285,7 +286,7 @@
 .mainprofile .bottomdiv {
     display: flex;
     justify-content: space-around;
-    margin-top: -3vh;
+    margin-top: -4vh;
   }
   
   .button-container {

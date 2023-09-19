@@ -87,7 +87,7 @@ function Dashboard() {
           backgroundColor: 'transparent', // Middle section background color
           height: '10%', // Set the height of the middle section
         }}>
-            <Col md={12}><h2 style={{textAlign:'center',fontWeight:'700'}}>Welcome to your Personalised Dashboard!</h2></Col>
+            <Col md={12}><h2 style={{textAlign:'center',fontWeight:'700',marginTop:'-4vh'}}>Welcome to your Personalised Dashboard!</h2></Col>
         </Row>
         <Outlet/>
         <Row style={{

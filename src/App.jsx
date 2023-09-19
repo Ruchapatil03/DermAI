@@ -14,7 +14,7 @@ import CommonDashboard from "./components/CommonDashboard";
 import PatientDashboard from "./components/PatientDashboard";
 import ProfessionalDashboard from "./components/ProfessionalDashboard";
 import GetDiagnosis from "./components/GetDiagnosis";
-import Upload from "./pages/Upload";
+
 
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
           </Route>
 
           <Route exact path="/test" element={<Test/>}></Route>
-          <Route exact path="/upload" element={<Upload/>}></Route>
+          
         </Routes>
       </Router>
     </div>
