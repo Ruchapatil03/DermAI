@@ -1,11 +1,14 @@
+// eslint-disable-next-line no-unused-vars
 import React, {useState,useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap'; // Import Bootstrap components
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+// eslint-disable-next-line no-unused-vars
 import { HiUserCircle } from "react-icons/hi";
 import { AiFillHome,AiFillMedicineBox } from "react-icons/ai";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdDocumentScanner } from "react-icons/md";
+// eslint-disable-next-line no-unused-vars
 import { Tooltip,Overlay } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import logo from "../assets/Dashboard/logo2.png";
