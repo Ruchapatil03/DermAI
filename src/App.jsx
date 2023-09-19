@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Dash from "./pages/Dash";
+import Upload from "./pages/Upload";
 import CommonForm from "./components/CommonForm";
 import PatientForm from "./components/PatientForm";
 import HealthcareProfessionalForm from "./components/HealthcareProfessionalForm";
@@ -24,7 +25,8 @@ function App() {
             <Route path="patient" element={<PatientForm />} />
             <Route path="healthcare-professional" element={<HealthcareProfessionalForm />} />
           </Route>
-          <Route exact path="/Dash" element={<Dash/>}></Route>
+          <Route exact path="/Dash" element={<Dash/>}></Route>\
+          <Route exact path="/Upload" element={<Upload/>}></Route>
         </Routes>
       </Router>
     </div>
