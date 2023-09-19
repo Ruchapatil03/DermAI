@@ -212,14 +212,15 @@
 
     .mainprofile .backgnd .prof .profinfo h2{
         width: 100%;
-        font-size: 5vw;
+        font-size: 6vw;
         font-weight: 600;
         margin-bottom: 1vh;
     }
 
     .mainprofile .backgnd .prof .profinfo .infoupdate{
         font-size: 2vw;
-        width: 53%;
+        width: 57%;
+        border-radius: 10px;
     }
 
     .mainprofile .backgnd .prof .profinfo center{
@@ -234,6 +235,11 @@
     .mainprofile .backgnd .detaildisp h2{
         font-size: 6vw; 
         font-weight: 550;
+    }
+
+    .mainprofile .heading img{
+        width: 25vw;
+        padding-left: 5vw;
     }
 }
 
