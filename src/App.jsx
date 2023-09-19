@@ -9,6 +9,11 @@ import Upload from "./pages/Upload";
 import CommonForm from "./components/CommonForm";
 import PatientForm from "./components/PatientForm";
 import HealthcareProfessionalForm from "./components/HealthcareProfessionalForm";
+import Test from "./pages/test";
+import CommonDashboard from "./components/CommonDashboard";
+import PatientDashboard from "./components/PatientDashboard";
+import ProfessionalDashboard from "./components/ProfessionalDashboard";
+import GetDiagnosis from "./components/GetDiagnosis";
 
 
 function App() {
@@ -25,6 +30,15 @@ function App() {
             <Route path="patient" element={<PatientForm />} />
             <Route path="healthcare-professional" element={<HealthcareProfessionalForm />} />
           </Route>
+          <Route path="/Dash/:currentPath" element={<Dash />}>
+              <Route path="patient" element={<CommonDashboard />} />
+              <Route path="professional" element={<CommonDashboard />} />
+              <Route path="patient/profile" element={<PatientDashboard />} />
+              <Route path="patient/getdiagnosis" element={<GetDiagnosis />} />
+              <Route path="professional/profile" element={<ProfessionalDashboard />} />
+          </Route>
+
+          <Route exact path="/test" element={<Test/>}></Route>
           <Route exact path="/Dash" element={<Dash/>}></Route>\
           <Route exact path="/Upload" element={<Upload/>}></Route>
         </Routes>

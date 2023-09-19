@@ -224,6 +224,11 @@
 				"type": "string"
 			},
 			{
+				"internalType": "address payable",
+				"name": "addr",
+				"type": "address"
+			},
+			{
 				"internalType": "string",
 				"name": "DetailsHash",
 				"type": "string"
@@ -251,6 +256,11 @@
 				"internalType": "uint256",
 				"name": "professionalID",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address payable",
+				"name": "addr",
+				"type": "address"
 			},
 			{
 				"internalType": "string",
