@@ -5,9 +5,15 @@ import bg from "../assets/Home/bg.svg";
 const Home = () => {
   return (
     <>
-    <div className="section1">
-      <img src={bg} alt="" />
+    <div className="secy1">
+      <div className='heading'>
+      <h1>DERMAI</h1>
+      </div>
+     
     </div>
+      <div>
+      <img src={bg} alt="" />
+      </div>
     </>
   );
 }

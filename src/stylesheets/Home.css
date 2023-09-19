@@ -1,11 +1,24 @@
-.section1{
+.secy1{
     height: 100vh;
     width: 100vw;
     background-color: black;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
 }
-.section1 img{
+.secy1 img{
     height: 100vh;
     width: 100vw;
     object-fit: cover;
+}
+.secy1 h1{
+    color: aliceblue;
+    font-size: 20vh;
+    letter-spacing: 1vw;
+    text-align: center;
+    z-index: -1;
 }
