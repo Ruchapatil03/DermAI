@@ -1,8 +1,5 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 /* .secy1{
     height: 100vh;
@@ -64,18 +61,21 @@
     height: 100vh;
     width: 100vw;
     display: flex;
+    background-size: cover;
 }
 
 .imgdiv06{
     width: 25%;
     height: 100%;
+    margin: 0;
 }
 
 .img06{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(3.5px) brightness(0.9);
+    filter: blur(2.5px) brightness(0.9);
+    margin: 0;
 }
 .center-content {
     display: flex;
@@ -98,6 +98,27 @@
     background-clip: text;
     -webkit-background-clip: text; */
     color: white;
-    font-weight: 700;
+    font-weight: 600;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); /* Increased X and Y offsets */
+}
+.container07{
+    background: rgba(111, 165, 207, 0.811);
+    /* background: linear-gradient(287deg, rgba(6,79,153,0.9220938375350141) 30%, rgba(111,165,207,0.9192927170868347) 60%, rgba(195,233,251,0.9248949579831933) 86%); */
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.container07 .heading07{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7vh 0 2vh 0;
+}
+.container07 .heading07 p{
+    color: aliceblue;
+    font-size: 7vh;
+    font-weight: 400;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.358);
 }
