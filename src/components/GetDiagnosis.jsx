@@ -1,13 +1,15 @@
 import Dropzone from "react-dropzone";
 import "../stylesheets/Dash.css";
 import React, { useState, useEffect, useRef } from "react";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+
 
 function GetDiagnosis() {
   const [filename, setfilename] = useState(null)
   const file = useRef(null)
 
   const handleSubmit = async () => {
-    if (file.current) 
+    if (file.current){
       const cloud = new FormData()
       cloud.append("file", file.current)
       cloud.append("upload_preset", "dermai")
@@ -58,9 +60,10 @@ function GetDiagnosis() {
   const [symptoms, setSymptoms] = useState('');
 
   return (<div className="backgnd">
-    <div className="prof">
+    <div className="prof" style={{display:'flex',flexDirection:'column'}}>
 
       <Dropzone
+      className='dropzone'
         onDrop={(acceptedFiles) => handlefiles(acceptedFiles)}
         multiple={false}
       >
@@ -68,21 +71,33 @@ function GetDiagnosis() {
           <section>
             <div {...getRootProps()}>
               <input {...getInputProps()} />
-              <div>
+              <div style={{display:'flex',flexDirection:'column'}}>
                 {/* <img src={imguploadsvg} alt="Image upload svg" /> */}
-                <p>
+                <p style={{textAlign:'center'}}>
                   Drag and drop your image here, or click to select a
                   file
                 </p>
-                <p>
+                <p style={{textAlign:'center'}}>
                   Accepts JPEG and PNG formats, limited to one image at
                   a time.
                 </p>
+                <AiOutlineCloudUpload
+            style={{
+              transform: 'scale(3)',
+              marginTop: '3vh',
+              cursor: 'pointer',
+              alignSelf: 'center',
+            }}
+          />
               </div>
             </div>
+            
+          
+        
           </section>
         )}
       </Dropzone>
+      
     </div>
 
     <div className="detaildisp">
