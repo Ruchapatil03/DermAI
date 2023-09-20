@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { useState,useEffect } from 'react';
+
 import "../stylesheets/Dash.css";
 import logo from "../assets/Dashboard/logo2.png";
 import { RiLogoutCircleRLine } from "react-icons/ri";
@@ -40,6 +41,29 @@ const Dash = () => {
         
       };
 
+      const handleLogout = async () => {
+        if (window.ethereum && window.ethereum.selectedAddress) {
+          try {
+            // Step 1: Sign a logout message
+            const message = 'Logout from DermAI'; // Replace with your own message
+            const signature = await window.ethereum.request({
+              method: 'personal_sign',
+              params: [message, window.ethereum.selectedAddress],
+            });
+            // Step 2: Display an alert
+            alert('You have been logged out.');
+            // Redirect to the home page or login page
+            window.location.href = '/'; // Change the URL to your home or login page
+          } catch (error) {
+            console.error('Error logging out:', error);
+          }
+        } else {
+          // If MetaMask is not available or not connected
+          alert('You are logged out.');
+        }
+      };
+    
+
 
 
   return (
@@ -50,8 +74,9 @@ const Dash = () => {
             <div className="heading">
                 <img src={logo} alt="LOGO" />
                 <div className="logout">
-                    <button className='button'>
-                        Logout
+                    <button className='button' onClick={handleLogout}>Logout
+                      
+                        
                     </button>
                     <RiLogoutCircleRLine className="logoutlogo"/>        
                 </div>    
