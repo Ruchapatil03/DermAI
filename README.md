@@ -7,7 +7,7 @@
 DermAI is a blockchain-based application that enables users to obtain preliminary skin condition diagnoses by uploading symptom images and text prompts, ensuring data privacy through Ethereum blockchain technology and promoting the sharing of healthcare data between Consultancee Users and Professional Users/Researchers."
 
 
-[Demo Video]()
+[Demo Video](https://drive.google.com/drive/folders/17kJf8z1C7Wgyji_oqxuvKF_IzYgi0auS)
 
 ## ⚒️ Working of DermAI
 <div align='center'>
