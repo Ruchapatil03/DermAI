@@ -6,7 +6,7 @@ const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
 import Web3 from "web3";
 import { Web3Storage } from "web3.storage";
 import { IoOpenOutline } from "react-icons/io5";
-import { result } from "lodash";
+// import { result } from "lodash";
 
 
 
