@@ -3,7 +3,31 @@
     
 
 } */
-
+.scrollla {
+    max-height: 70vh; /* Set a maximum height for the div to enable scrolling */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    scrollbar-width: thin;
+    margin-top: -36vh; /* Set the scrollbar width to thin (or auto) */
+  }
+  
+  /* Customize the scrollbar appearance */
+  .scrollla::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .scrollla::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+  }
+  
+  .scrollla::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 4px; /* Rounded corners for the thumb */
+  }
+  
+  .scrollla::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Thumb color on hover */
+  }
+  
 .mainprofile{
     background-color: #c3e9fb;
     background-size: cover;

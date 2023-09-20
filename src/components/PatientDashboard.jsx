@@ -156,7 +156,7 @@ useEffect(() => {
           setTimeout(() => {
             setIsLoading(false);
             console.log(details);            
-          }, 7000);
+          }, 1000);
           
         }
         else{
@@ -208,22 +208,44 @@ useEffect(() => {
             diag.diagnosis
         ); */}
 
-      {!isLoading && !showMsg && (<div>
-        {diagnosisDetails.map((details, index) => (
-  <div key={index}>
-    {/* Include content or JSX here */}
-    <p>Diagnosis ID: {details[0]}</p>
-    <p>Timestamp: {details[1]}</p>
-    <p>Symptoms Image: {details[2]}</p>
-    <p>Symptoms: {details[3]}</p>
-    <p>Diagnosis: {details[4]}</p>
-    {/* Add more details as needed */}
-  </div>
-))}
-
-
-
-      </div>)}
+      {!isLoading && !showMsg && (
+      <div className='scrollla' >
+        <table style={{zIndex:'6'}}>
+        <thead>
+          <tr style={{ backgroundColor: '#0076BE', color: 'white' }}>
+            <th style={{ padding: '10px', textAlign: 'left' }}>Diagnosis ID:</th>
+            <th style={{ padding: '10px', textAlign: 'left' }}>On:</th>
+            <th style={{ padding: '10px', textAlign: 'left' }}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {diagnosisDetails.map((details, index) => (
+            <tr key={index} style={{ borderBottom: '1px solid #0076BE' }}>
+              <td style={{ padding: '10px' }}>diag_{parseInt(details[0]).toString()}@dermAI</td>
+              <td style={{ padding: '10px' }}>{details[1]}</td>
+              <td style={{ padding: '10px' }}>
+                <button
+                  style={{
+                    backgroundColor: '#0076BE',
+                    color: 'white',
+                    border: 'none',
+                    padding: '5px 10px',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  View Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      
+      
+    
+    )}
       {isLoading && (<div className="loading-spinner" style={{marginTop:"-40vh"}}>
       <div className="spinner"></div>
     </div>)}
@@ -304,7 +326,8 @@ function PatientDashboard() {
               flexDirection: "column",
               alignItems: "center",
               flex: 1,
-              justifyContent: "center",
+              // marginTop:index==1?"0vh":'0',
+              justifyContent: index==0?"center":'normal',
               textAlign: "center",
               fontSize: "larger",
             }}
