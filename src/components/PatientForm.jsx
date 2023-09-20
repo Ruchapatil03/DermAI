@@ -79,6 +79,8 @@ function PatientForm() {
       const client = makeStorageClient();
       const cid = await client.put(files);
       const fileName = files[0].name;
+      const hash = `${cid};${fileName}`;
+
       alert("Diagnosis Received!");
   
       const formattedDate = formatDate(new Date());
@@ -92,12 +94,12 @@ function PatientForm() {
       const files_ = [new File([blob], 'PatientInformation.json')];
       
       const cid_ = await client.put(files_);
-      console.log('Stored files with CID:', cid_);
+      console.log('Stored files with CID:', );
       
       const txObject = {
         from: accounts[0],
         to: contractAddress,
-        data: contract.methods.createPatient('', cid_, cid).encodeABI(),        
+        data: contract.methods.createPatient('', cid_, hash).encodeABI(),        
         gas: 2000000, // Specify your desired gas limit
       };
       const txHash = await web3.eth.sendTransaction(txObject);

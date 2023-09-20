@@ -51,8 +51,8 @@ function CommonDashboard() {
               // Get the contract instance
               const contract = new web3.eth.Contract(DermAIABI, contractAddress);
               setContract(contract);
+              setIsLoading(true);
               let result;
-                setIsLoading(true);
               if(selectedRole=='patient'){result = await contract.methods.getPatientDetails(userID).call(); await retrieveJSONFile(result[3]);}
               else if(selectedRole=='professional'){result = await contract.methods.getProfessionalDetails(userID).call();await retrieveJSONFile(result[3]);}
               setCounter(result[5]);
