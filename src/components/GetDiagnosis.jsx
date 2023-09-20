@@ -5,7 +5,8 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Web3Storage } from 'web3.storage';
 import DermAIABI from "../ABI/RevisedABI.json"
 import Web3 from 'web3';
-import { useLocation } from "react-router-dom";
+import { Form, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
 
@@ -24,10 +25,12 @@ function GetDiagnosis() {
   const [filename, setfilename] = useState(null)
   const file = useRef(null)
 
+
   const [web3, setWeb3] = useState(null);
+  const [diag, setDiag] = useState(null);
   const [accounts, setAccounts] = useState([]);
   const [contract, setContract] = useState(null);
-  const [symptomsImageURL,setSymptomsImageURL] = useState('');
+  const [symptomsImageURL, setSymptomsImageURL] = useState('');
 
   useEffect(() => {
     const initialize = async () => {
@@ -60,8 +63,8 @@ function GetDiagnosis() {
     initialize();
   }, []);
 
-  
-  const {userID, selectedRole} = location.state ? location.state : null;
+
+  const { userID, selectedRole } = location.state ? location.state : null;
 
 
   const getCurrentTimestamp = () => {
@@ -74,13 +77,13 @@ function GetDiagnosis() {
       minute: '2-digit',
       hour12: true,
     };
-  
+
     return currentDate.toLocaleString('en-US', options);
   };
-   
+
 
   const handleSubmit = async () => {
-    if (file.current){
+    if (file.current) {
       const cloud = new FormData()
       cloud.append("file", file.current)
       cloud.append("upload_preset", "dermai")
@@ -98,25 +101,38 @@ function GetDiagnosis() {
 
       const data1 = await response1.json()
       setSymptomsImageURL(data1.url) // url of the image stored in cloudinary
+
+      try {
+        const form = new FormData()
+        form.append("file", file.current)
+        const response = await axios.post("http://localhost:5000/predict", form)
+          .then((res) => {
+            setDiag(res.data.class)
+          })
+      }
+      catch (err) {
+        console.log(err)
+      }
+
       try {
         const blob = new Blob([JSON.stringify(symptomsImageURL)], {
           type: 'application/json',
         });
-        const files_ = [new File([blob], 'SymptomsImageURL.json')];        
+        const files_ = [new File([blob], 'SymptomsImageURL.json')];
         const cid_ = await client.put(files_);
         const currentTimestamp = getCurrentTimestamp();
         const input_symptoms = symptoms;
-        const diagnosis = "Some Skin Disease";       
+        const diagnosis = "Some Skin Disease";
         const txObject = {
           from: accounts[0],
           to: contractAddress,
-          data: contract.methods.createDiagnosis(currentTimestamp, cid_, input_symptoms,diagnosis,userID).encodeABI(),        
+          data: contract.methods.createDiagnosis(currentTimestamp, cid_, input_symptoms, diagnosis, userID).encodeABI(),
           gas: 2000000, // Specify your desired gas limit
         };
         const txHash = await web3.eth.sendTransaction(txObject);
         console.log(txHash);
         alert('Diagnosis Successfully Authenticated!');
-        
+
       } catch (error) {
         console.error('Error:', error);
         alert("There was an error!");
@@ -126,7 +142,7 @@ function GetDiagnosis() {
 
   }
 
-  const retrieveImage = async(_diagnosisID)=>{
+  const retrieveImage = async (_diagnosisID) => {
 
     const client = makeStorageClient();
     const diagnosis = await contract.methods.getDiagnosisDetails(_diagnosisID).call();
@@ -138,11 +154,11 @@ function GetDiagnosis() {
     }
     const files = await res.files()
     for (const file of files) {
-    if (file.name === 'SymptomsImageURL.json') { // Assuming the JSON file has a specific name
+      if (file.name === 'SymptomsImageURL.json') { // Assuming the JSON file has a specific name
         const jsonContent = await file.text(); // Read the JSON file content as text
         const jsonObject = JSON.parse(jsonContent); // Parse the JSON content
         console.log(jsonObject);
-    }
+      }
     }
   }
 
@@ -177,10 +193,10 @@ function GetDiagnosis() {
   const [symptoms, setSymptoms] = useState('');
 
   return (<div className="backgnd">
-    <div className="prof" style={{display:'flex',flexDirection:'column'}}>
+    <div className="prof" style={{ display: 'flex', flexDirection: 'column' }}>
 
       <Dropzone
-      className='dropzone'
+        className='dropzone'
         onDrop={(acceptedFiles) => handlefiles(acceptedFiles)}
         multiple={false}
       >
@@ -188,33 +204,33 @@ function GetDiagnosis() {
           <section>
             <div {...getRootProps()}>
               <input {...getInputProps()} />
-              <div style={{display:'flex',flexDirection:'column'}}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {/* <img src={imguploadsvg} alt="Image upload svg" /> */}
-                <p style={{textAlign:'center'}}>
+                <p style={{ textAlign: 'center' }}>
                   Drag and drop your image here, or click to select a
                   file
                 </p>
-                <p style={{textAlign:'center'}}>
+                <p style={{ textAlign: 'center' }}>
                   Accepts JPEG and PNG formats, limited to one image at
                   a time.
                 </p>
                 <AiOutlineCloudUpload
-            style={{
-              transform: 'scale(3)',
-              marginTop: '3vh',
-              cursor: 'pointer',
-              alignSelf: 'center',
-            }}
-          />
+                  style={{
+                    transform: 'scale(3)',
+                    marginTop: '3vh',
+                    cursor: 'pointer',
+                    alignSelf: 'center',
+                  }}
+                />
               </div>
             </div>
-            
-          
-        
+
+
+
           </section>
         )}
       </Dropzone>
-      
+
     </div>
 
     <div className="detaildisp">
@@ -241,27 +257,32 @@ function GetDiagnosis() {
       </div>
 
       <div className="disp2" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-        <p style={{ fontWeight: '700', textAlign: 'center', fontSize: 'large' }}>Discover your path to better health. Take the first step with DermAI's precise and empowering diagnosis platform.</p>
-        <button
-          style={{
-            width: '12vw',
-            height: '7vh',
-            backgroundColor: '#068FFF',
-            color: 'aliceblue',
-            border: 'none',
-            outline: 'none',
-            borderRadius: '2vh',
-            fontWeight: '700',
-            fontSize: 'large',
+        {!diag ? (<div>
+          <p style={{ fontWeight: '700', textAlign: 'center', fontSize: 'large' }}>Discover your path to better health. Take the first step with DermAI's precise and empowering diagnosis platform.</p>
+          <button
+            style={{
+              width: '12vw',
+              height: '7vh',
+              backgroundColor: '#068FFF',
+              color: 'aliceblue',
+              border: 'none',
+              outline: 'none',
+              borderRadius: '2vh',
+              fontWeight: '700',
+              fontSize: 'large',
 
-            boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
-            cursor: 'pointer', // Optional: Add pointer cursor for better UX
-          }}
+              boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+              cursor: 'pointer', // Optional: Add pointer cursor for better UX
+            }}
 
-          onClick={handleSubmit}
-        >
-          View Results✨
-        </button>
+            onClick={handleSubmit}
+          >
+            View Results✨
+          </button>
+        </div>)
+        : (
+          diag
+        )}
         {/* <button
           style={{
             width: '12vw',
