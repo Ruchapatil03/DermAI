@@ -2,19 +2,56 @@
 
 import React,{useState,useEffect} from 'react';
 import "../stylesheets/Login.css";
+import DermAIABI from '../ABI/RevisedABI.json';
 import ig from "../assets/Login/logimg.png";
 import Web3 from 'web3';
 
 import { Web3Storage } from 'web3.storage';
+import { useNavigate } from 'react-router-dom';
+
+const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
 
 
 const Login = () => {
 
-    const [selectedRole, setSelectedRole] = useState('');
+    const nav = useNavigate();
+    const [isLoading,setIsLoading] = useState(false);
+
+    
+
+    const goToDash = async (e) => {
+        e.preventDefault();
+        if (selectedRole === 'Select') {
+          alert('Please select a role.');
+        } else {
+          if (selectedRole === 'patient') {
+            try {
+              const result = await contract.methods.getPatientDetails(userID).call();
+              if(result[2]==walletAddress){
+                const result = await web3.eth.personal.sign("User Logged In", walletAddress, '');
+                if(result){nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });}}                
+              else{alert("Incorrect access role or user ID. Please check again.")}
+              
+              setIsLoading(false)
+            } catch (error) {
+              console.error('Error fetching patient details:', error);
+              // Handle the error appropriately (e.g., show an error message)
+            }
+          }
+      
+          // Navigate to the dashboard page with user ID and selected role in the state
+          //nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });
+        }
+      };
+      
+      
+
     const [web3, setWeb3] = useState(null);
     const [accounts, setAccounts] = useState([]);
     const [contract, setContract] = useState(null);
     const [walletAddress,setWalletAddress] = useState('');
+    const [selectedRole, setSelectedRole] = useState('');
+    const [userID, setUserID] = useState('');
 
   useEffect(() => {
     const initialize = async () => {
@@ -25,7 +62,8 @@ const Login = () => {
           await window.ethereum.request({ method: 'eth_requestAccounts' });
           const web3 = new Web3(window.ethereum);
           setWeb3(web3);
-
+          const contract = new web3.eth.Contract(DermAIABI, contractAddress);
+          setContract(contract);
           // Get the user's accounts
           const accounts = await web3.eth.getAccounts();
           setAccounts(accounts);
@@ -51,7 +89,8 @@ const Login = () => {
 
   // Handle role selection
   const handleRoleChange = (event) => {
-    setSelectedRole(event.target.value);
+    const { name,value } = event.target;
+    setSelectedRole(value);
   };
   return (
     <>
@@ -73,19 +112,19 @@ const Login = () => {
                         <label>Role:</label>
                         <select value={selectedRole} onChange={handleRoleChange}>
                             <option value="">Select a Role</option>
-                            <option value="Patient">Patient</option>
-                            <option value="HealthcareProfessional">Healthcare Professional</option>
+                            <option value="patient">Patient</option>
+                            <option value="professional">Healthcare Professional</option>
                         </select>
                         
                         </div>
                     <div>
                         <label>User ID:</label>
                         <br />
-                        <input name="User ID" type="text" />
+                        <input name="User ID" type="text" onChange={(e)=>{setUserID(e.target.value)}}/>
                     </div>
 
                     <center>
-                        <button >
+                        <button onClick={goToDash} >
                         SUBMIT
                         </button>
                         {/* <input type="submit" className='submit'/> */}

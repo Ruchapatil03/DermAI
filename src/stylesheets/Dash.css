@@ -68,8 +68,8 @@
 }
 .mainprofile .backgnd .prof{
     width: 46vw;
-    height: 39vh;
-    margin: 0 1vw 0 2vw;
+    height: 44vh;
+    margin: -3vh 1vw 0 2vw;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 2vh;
@@ -118,7 +118,7 @@
     flex-direction: column;
 }
 .mainprofile .backgnd .detaildisp .disp1{
-    width: 46vw;
+    width: 47vw;
     height: 29vh;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(0px);
@@ -129,10 +129,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.6vh 2vw 1vh 3vw;
+    padding: 1.6vh 0vw 1vh 1vw;
 }
 .mainprofile .backgnd .detaildisp .disp2{
-    width: 46vw;
+    width: 47vw;
     height: 22vh;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(0px);
@@ -143,7 +143,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.6vh 2vw 1vh 3vw;
+    padding: 1.6vh 2vw 1vh 1vw;
 }
 .mainprofile .bottomdiv{
     width: 30vw;
@@ -319,4 +319,27 @@
     font-size: 12px;
     margin-top: 8px;
   }
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #116D6E ;
+    border-radius: 100%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

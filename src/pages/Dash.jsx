@@ -11,13 +11,7 @@ import { CgPill } from "react-icons/cg"; //patient-profile
 import { FaUserDoctor } from "react-icons/fa6"; //professional-profile
 import { TbReportAnalytics } from "react-icons/tb"; //get-diagnosis
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-
-
-// Extract the parent route from the path
-
-
-
+import { useParams,useLocation } from 'react-router-dom';
 
 
 
@@ -26,6 +20,9 @@ const Dash = () => {
     const [activeButton, setActiveButton] = useState(0);
     const nav = useNavigate();
     const { currentPath } = useParams();
+
+    const location = useLocation();
+    const { userID, selectedRole } = location.state?location.state:null;  
 
     const buttons = [
         { icon: <AiFillHome />, label: 'Home',route:'/'  },
@@ -38,8 +35,8 @@ const Dash = () => {
 
       // Function to navigate to the parent/nested route
       const navigateToParentNestedRoute = (index) => {
-        
-          nav(`${currentPath}/${buttons[index].route}`);
+        // console.log(`${currentPath}/${buttons[index].route}`);
+          nav(`${currentPath}/${buttons[index].route}`,{ state: { userID, selectedRole } });
         
       };
 
