@@ -39,7 +39,12 @@ const Home = () => {
         <div className='imgdiv06' data-aos="slide-up" data-aos-delay="900" data-aos-duration="700"><img src={didi3} alt="" className='img06'/></div>
         <p className='heading06' data-aos="zoom-in" data-aos-delay="1500" data-aos-duration="400">DermAI</p>
       </div>
+      <div className="but">
+        <a href="/Login"><button className='start'> LOGIN </button></a>
+        
+      </div>
     </section>
+      
 
     {/* <section>
     <div className="container07">
