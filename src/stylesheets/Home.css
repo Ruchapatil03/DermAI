@@ -77,8 +77,16 @@
     object-fit: cover;
     filter: blur(3.5px) brightness(0.9);
 }
-
-.heading06{
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text within the div */
+    height: 100vh; /* Make the container fill the viewport height */
+  }
+  
+.heading06 {
     position: absolute;
     font-size: 12vw;
     width: 100%;
@@ -86,9 +94,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/Home/text2.jpg');
+    /* background-image: url('../assets/Home/text2.jpg');
     background-clip: text;
-    -webkit-background-clip:text;
-    color: transparent;
+    -webkit-background-clip: text; */
+    color: white;
     font-weight: 700;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); /* Increased X and Y offsets */
 }

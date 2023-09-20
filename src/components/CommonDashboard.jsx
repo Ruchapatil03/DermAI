@@ -55,7 +55,7 @@ function CommonDashboard() {
               let result;
               if(selectedRole=='patient'){result = await contract.methods.getPatientDetails(userID).call(); await retrieveJSONFile(result[3]);}
               else if(selectedRole=='professional'){result = await contract.methods.getProfessionalDetails(userID).call();await retrieveJSONFile(result[3]);}
-              setCounter(result[5]);
+              setCounter(result[5].length);
 
               async function retrieveJSONFile(cid) {
                 const client = makeStorageClient();
@@ -129,7 +129,7 @@ return(
     <div className="disp2">
         <h2>Platform Details: </h2>
         <h5><b>Role:</b> {selectedRole=='patient'?'Medical Consultee':'Healthcare Professional'}</h5>
-        <h5><b>{selectedRole=='patient'?'Diagnoses Count':'Patients Under Consultancy'}:</b>{counter}</h5>
+        <h5><b>{selectedRole=='patient'?'Diagnoses Count:    ':'Patients Under Consultancy:    '}</b>{counter}</h5>
     </div>
 </div>)}
 

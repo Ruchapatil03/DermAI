@@ -6,6 +6,7 @@ const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
 import Web3 from "web3";
 import { Web3Storage } from "web3.storage";
 import { IoOpenOutline } from "react-icons/io5";
+import { result } from "lodash";
 
 
 
@@ -16,6 +17,12 @@ function getAccessToken() {
 function makeStorageClient() {
   return new Web3Storage({ token: getAccessToken() });
 }
+
+const headings = ["Previous Diagnosis", "DermAI Diagnosis"];
+  const emptyDescriptions = [
+    `A comprehensive history of your past medical diagnoses.`,
+    `A record of your past experiences with our platform's quick and precise AI-powered diagnosis.`,
+  ];
 
 
 
@@ -94,18 +101,159 @@ useEffect(() => {
   );
 }
 
+function DermAIDiagnosis({_userID,_selectedRole}){
+
+  const [web3, setWeb3] = useState(null);
+  const [accounts, setAccounts] = useState([]);
+  const [contract, setContract] = useState(null);
+  const [walletAddress,setWalletAddress] = useState('');
+  const [CID,setCID] = useState('');
+  const [diagHist,setDiagHist] = useState([]);
+  const [showMsg,setShowMsg] = useState(false);
+  const [diagnosisDetails, setDiagnosisDetails] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
+
+
+  const getVehicleURL = async () =>{
+    
+    const baseWeb3StorageUrl = 'https://ipfs.io/ipfs/';
+    const [cid, fileName] = CID.split(';');
+
+    const URL = `${baseWeb3StorageUrl}${cid}/${fileName}`; 
+    return URL;
+
+  }
+
+
+useEffect(() => {
+  const initialize = async () => {
+    // Check if web3 is injected by the browser (Mist/MetaMask)
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        // Request account access
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const web3 = new Web3(window.ethereum);
+        setWeb3(web3);
+        const contract = new web3.eth.Contract(DermAIABI, contractAddress);
+        setContract(contract);
+        // Get the user's accounts
+        const accounts = await web3.eth.getAccounts();
+        setAccounts(accounts);
+        setWalletAddress(accounts[0])
+        setIsLoading(true);
+        const result = await contract.methods.getPatientDetails(_userID).call();
+        setDiagHist(result[5]);
+      
+        if(result[5].length>0){
+          let details = [];
+          let temp = result[5]
+          for (let index = 0; index < result[5].length; index++) {
+            const result = await contract.methods.getDiagnosisDetails(temp[index]).call();
+            details.push(result); 
+          }
+          console.log(details);
+          setDiagnosisDetails(details);
+          setTimeout(() => {
+            setIsLoading(false);
+            console.log(details);            
+          }, 7000);
+          
+        }
+        else{
+          setShowMsg(true);
+          setIsLoading(false);
+        }
+        //setIsLoading(false);
+
+
+      } catch (error) {
+        console.error('Error initializing Web3:', error);
+        alert(
+          'An error occurred while initializing Web3. Please make sure you have MetaMask installed and try again.'
+        );
+      }
+    } else {
+      console.log('Please install MetaMask!');
+    }
+  };
+
+  initialize();
+}, []);
+
+
+  return (
+    <div>
+      {/* <h1>User ID: {_userID}</h1>
+      <br></br>
+      <h1>Selected Role: {_selectedRole}</h1> */}
+      {/* <button
+  onClick={(event) => {
+    event.preventDefault();
+    getVehicleURL()
+      .then((vehicleURL) => {
+        window.open(vehicleURL, "_blank");
+      })
+      .catch((error) => {
+        console.error("Error retrieving vehicle URL:", error);
+      });
+  }} style={{cursor:'pointer',transform:'scale(1.5)',backgroundColor:'transparent',border:'none',fontWeight:'700',color:'white'}}>
+  OPEN<IoOpenOutline style={{marginTop:'-0.5vh',marginLeft:'0.5vw',fontWeight:'700'}}/>
+</button> */}
+
+{/* return (
+            diag.diagnosisID,
+            diag.timestamp,
+            diag.inputDiagnosisImage,
+            diag.inputSymptoms,
+            diag.diagnosis
+        ); */}
+
+      {!isLoading && !showMsg && (<div>
+        {diagnosisDetails.map((details, index) => (
+  <div key={index}>
+    {/* Include content or JSX here */}
+    <p>Diagnosis ID: {details[0]}</p>
+    <p>Timestamp: {details[1]}</p>
+    <p>Symptoms Image: {details[2]}</p>
+    <p>Symptoms: {details[3]}</p>
+    <p>Diagnosis: {details[4]}</p>
+    {/* Add more details as needed */}
+  </div>
+))}
+
+
+
+      </div>)}
+      {isLoading && (<div className="loading-spinner" style={{marginTop:"-40vh"}}>
+      <div className="spinner"></div>
+    </div>)}
+
+      {showMsg && (<div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              flex: 1,
+              justifyContent: "center",
+              textAlign: "center",
+              fontSize: "larger",
+            }}
+          >
+            Click on the Test button to get your first Diagnosis!
+          </div>)}
+    </div>
+  );
+
+}
+
 function PatientDashboard() {
-  const headings = ["Previous Diagnosis", "DermAI Diagnosis"];
-  const emptyDescriptions = [
-    `A comprehensive history of your past medical diagnoses.`,
-    `A record of your past experiences with our platform's quick and precise AI-powered diagnosis. Click on the Test button to get your first Diagnosis!`,
-  ];
+  
   
 
   const location = useLocation();
   const { userID, selectedRole } = location.state ? location.state : {};
 
-  const components = [<DiagnosisHistory _userID={userID} _selectedRole={selectedRole} />, <></>];
+  const components = [<DiagnosisHistory _userID={userID} _selectedRole={selectedRole} />, <DermAIDiagnosis _userID={userID} _selectedRole={selectedRole} />];
 
   return (
     <div className="backgnd">

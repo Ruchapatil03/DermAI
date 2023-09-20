@@ -2,11 +2,82 @@ import Dropzone from "react-dropzone";
 import "../stylesheets/Dash.css";
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { Web3Storage } from 'web3.storage';
+import DermAIABI from "../ABI/RevisedABI.json"
+import Web3 from 'web3';
+import { useLocation } from "react-router-dom";
+
+const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
+
+function getAccessToken() {
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NTg0QzFjYjQ1QzczMTQwODQ3RjY2NjBkQ0Y5MzNjODNBM2NFMjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTUxMjAxNDc5MjEsIm5hbWUiOiJ1c2VyUHJvZmlsZVNJSCJ9.vVWHthR6rySB1W48_oO_vjHBF36_3Pm9ljHRIpZviDE";
+}
+
+function makeStorageClient() {
+  return new Web3Storage({ token: getAccessToken() });
+}
 
 
 function GetDiagnosis() {
+
+  const location = useLocation();
   const [filename, setfilename] = useState(null)
   const file = useRef(null)
+
+  const [web3, setWeb3] = useState(null);
+  const [accounts, setAccounts] = useState([]);
+  const [contract, setContract] = useState(null);
+  const [symptomsImageURL,setSymptomsImageURL] = useState('');
+
+  useEffect(() => {
+    const initialize = async () => {
+      // Check if web3 is injected by the browser (Mist/MetaMask)
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          // Request account access
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const web3 = new Web3(window.ethereum);
+          setWeb3(web3);
+
+          // Get the user's accounts
+          const accounts = await web3.eth.getAccounts();
+          setAccounts(accounts);
+
+          // Get the contract instance
+          const contract = new web3.eth.Contract(DermAIABI, contractAddress);
+          setContract(contract);
+        } catch (error) {
+          console.error('Error initializing Web3:', error);
+          alert(
+            'An error occurred while initializing Web3. Please make sure you have MetaMask installed and try again.'
+          );
+        }
+      } else {
+        console.log('Please install MetaMask!');
+      }
+    };
+
+    initialize();
+  }, []);
+
+  
+  const {userID, selectedRole} = location.state ? location.state : null;
+
+
+  const getCurrentTimestamp = () => {
+    const currentDate = new Date();
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    };
+  
+    return currentDate.toLocaleString('en-US', options);
+  };
+   
 
   const handleSubmit = async () => {
     if (file.current){
@@ -23,9 +94,55 @@ function GetDiagnosis() {
         }
       )
 
-      const data1 = await response1.json()
+      const client = makeStorageClient();
 
-      console.log(data1.url) // url of the image stored in cloudinary
+      const data1 = await response1.json()
+      setSymptomsImageURL(data1.url) // url of the image stored in cloudinary
+      try {
+        const blob = new Blob([JSON.stringify(symptomsImageURL)], {
+          type: 'application/json',
+        });
+        const files_ = [new File([blob], 'SymptomsImageURL.json')];        
+        const cid_ = await client.put(files_);
+        const currentTimestamp = getCurrentTimestamp();
+        const input_symptoms = symptoms;
+        const diagnosis = "Some Skin Disease";       
+        const txObject = {
+          from: accounts[0],
+          to: contractAddress,
+          data: contract.methods.createDiagnosis(currentTimestamp, cid_, input_symptoms,diagnosis,userID).encodeABI(),        
+          gas: 2000000, // Specify your desired gas limit
+        };
+        const txHash = await web3.eth.sendTransaction(txObject);
+        console.log(txHash);
+        alert('Diagnosis Successfully Authenticated!');
+        
+      } catch (error) {
+        console.error('Error:', error);
+        alert("There was an error!");
+      }
+    }
+
+
+  }
+
+  const retrieveImage = async(_diagnosisID)=>{
+
+    const client = makeStorageClient();
+    const diagnosis = await contract.methods.getDiagnosisDetails(_diagnosisID).call();
+    const diagCID = diagnosis[2];
+    const res = await client.get(diagCID);
+    console.log(`Got a response! [${res.status}] ${res.statusText}`);
+    if (!res.ok) {
+      throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`);
+    }
+    const files = await res.files()
+    for (const file of files) {
+    if (file.name === 'SymptomsImageURL.json') { // Assuming the JSON file has a specific name
+        const jsonContent = await file.text(); // Read the JSON file content as text
+        const jsonObject = JSON.parse(jsonContent); // Parse the JSON content
+        console.log(jsonObject);
+    }
     }
   }
 
@@ -110,7 +227,7 @@ function GetDiagnosis() {
           placeholder="Describe your symptoms..."
           onChange={(e) => { setSymptoms(e.target.value) }}
           style={{
-            width: '100%',
+            width: '98%',
             padding: '10px',
             wordWrap: 'break-word',
             height: '70%',
@@ -145,6 +262,26 @@ function GetDiagnosis() {
         >
           View Results✨
         </button>
+        {/* <button
+          style={{
+            width: '12vw',
+            height: '7vh',
+            backgroundColor: '#068FFF',
+            color: 'aliceblue',
+            border: 'none',
+            outline: 'none',
+            borderRadius: '2vh',
+            fontWeight: '700',
+            fontSize: 'large',
+
+            boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+            cursor: 'pointer', // Optional: Add pointer cursor for better UX
+          }}
+
+          onClick={()=>{retrieveImage(1);}}
+        >
+          Retrieve Result
+        </button> */}
       </div>
 
     </div>
