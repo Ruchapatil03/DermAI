@@ -4,7 +4,7 @@ import { Web3Storage } from 'web3.storage';
 import DermAIABI from "../ABI/RevisedABI.json"
 import Web3 from 'web3';
 
-const contractAddress = '0x47DD92CcBa70120AC0B8fF5d75d61a7E441D6F8c';
+const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
 
 function getAccessToken() {
   return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NTg0QzFjYjQ1QzczMTQwODQ3RjY2NjBkQ0Y5MzNjODNBM2NFMjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTUxMjAxNDc5MjEsIm5hbWUiOiJ1c2VyUHJvZmlsZVNJSCJ9.vVWHthR6rySB1W48_oO_vjHBF36_3Pm9ljHRIpZviDE";
@@ -62,7 +62,12 @@ function PatientForm() {
     return new Date(date).toLocaleDateString(undefined, options);
   };
 
-  const handleFileChange = async () => {
+  const handleFileInputChange = () => {
+    // Access the selected file(s) using fileInputRef.current.files
+    const selectedFiles = fileInputRef.current.files;
+  };
+
+  const storeFiles = async () => {
     const files = getFiles();
   
     if (!files || files.length === 0) {
@@ -74,7 +79,7 @@ function PatientForm() {
       const client = makeStorageClient();
       const cid = await client.put(files);
       const fileName = files[0].name;
-      alert("Your paperwork has been successfully added to our system!");
+      alert("Diagnosis Received!");
   
       const formattedDate = formatDate(new Date());
       const PatientInformation = {
@@ -88,13 +93,20 @@ function PatientForm() {
       
       const cid_ = await client.put(files_);
       console.log('Stored files with CID:', cid_);
-  
-      // Try to call the contract function
-      await contract.methods.createPatient('', cid_, cid).send({ from: accounts[0] });
-      alert('Contract function called successfully');
+      
+      const txObject = {
+        from: accounts[0],
+        to: contractAddress,
+        data: contract.methods.createPatient('', cid_, cid).encodeABI(),        
+        gas: 2000000, // Specify your desired gas limit
+      };
+      const txHash = await web3.eth.sendTransaction(txObject);
+      console.log(txHash);
+      alert('Patient Successfully Registered!');
+      
     } catch (error) {
       console.error('Error:', error);
-      alert("Paperwork upload failed! Please try again later.");
+      alert("There was an error!");
     }
   };
   
@@ -106,8 +118,16 @@ function PatientForm() {
     return null;
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await storeFiles();
+   
+
+  };
+
   return (
-    <form>
+    <div>
+        <form onSubmit={handleSubmit}>
       <div>
         <label>Upload your Diagnosis History:</label>
         <br />
@@ -115,10 +135,30 @@ function PatientForm() {
           name="diagHistory"
           type="file"
           ref={fileInputRef}
-          onChange={handleFileChange} // Automatically trigger file upload on change
+          onChange={handleFileInputChange}
+           // Automatically trigger file upload on change
         />
       </div>
+      <button style={{
+  cursor: 'pointer',
+  width: '15vw',
+  height: '7vh',
+  border: 'none',
+  borderRadius: '3vh',
+  backgroundColor: '#0f4a91',
+  color: '#f9feff',
+  marginTop: '3vh',
+  fontSize: '2.5vh',
+  letterSpacing: '0.1vw'
+}}
+onClick={handleSubmit}>SUBMIT</button>
     </form>
+    
+
+
+    </div>
+    
+
   );
 }
 
