@@ -19,7 +19,7 @@
     font-family: 'Poppins', sans-serif;
 }
 .outer1{
-    height: 65vh;
+    height: 68vh;
     width: 60vw;
     display: flex;
     flex-direction: row;
@@ -36,7 +36,7 @@
     align-items: center;
     height: 70vh;
     width: 28vw;
-    margin:15vh 2vw 0 4vw;
+    margin:15vh 0 0 4vw;
 }
 .outer1 .formsection1 span{
     letter-spacing: 0.2vw;
@@ -45,13 +45,13 @@
     font-size: 5.5vh;
     font-weight: 600;
 }
-.outer1 .formsection1 .form{
+.outer1 .formsection1 .form1{
     display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-    margin: 1vh 2vh 4vh 7vh;
+    margin: 1.2vh 2vh 4vh 4vh;
 }
 .outer1 .formsection1 label{
     font-size: 2.5vh;

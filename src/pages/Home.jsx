@@ -41,7 +41,7 @@ const Home = () => {
       </div>
     </section>
 
-    <section>
+    {/* <section>
     <div className="container07">
         <div className='heading07' data-aos="slide-right" data-aos-duration="800">
           <p>Get diagnosed in 3 easy steps !</p>
@@ -67,7 +67,7 @@ const Home = () => {
       <div className="container08">
         <h1>What we do</h1>
       </div>
-    </section>
+    </section> */}
     </>
   );
 }
