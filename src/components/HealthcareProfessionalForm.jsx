@@ -86,15 +86,22 @@ const HealthcareProfessionalForm = () => {
       };
       const blob = new Blob([JSON.stringify(healthcareProfessionalInformation)], { type: 'application/json' })
       const files = [new File([blob], 'healthcareProfessionalInformation.json')]
-      const client = makeStorageClient()
-      
+      const client = makeStorageClient()      
       // Try to upload to web3.storage
       const cid = await client.put(files)
       console.log('Stored files with CID:', cid)
-  
+      const txObject = {
+        from: accounts[0],
+        to: contractAddress,
+        data: contract.methods.createProfessional('', cid).encodeABI(),        
+        gas: 2000000, // Specify your desired gas limit
+      };
+      const txHash = await web3.eth.sendTransaction(txObject);
+      console.log(txHash);
+      alert('Professional Successfully Registered!');
       // Try to call the contract function
-      await contract.methods.createProfessional('', cid).send({ from: accounts[0] });
-      alert('Contract function called successfully')
+      // await contract.methods.createProfessional('', cid).send({ from: accounts[0] });
+      // alert('Contract function called successfully')
     } catch (error) {
       console.error('Error:', error)
       // Handle the error as needed (e.g., display an error message)

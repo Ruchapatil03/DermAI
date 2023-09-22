@@ -38,6 +38,21 @@ const Login = () => {
               // Handle the error appropriately (e.g., show an error message)
             }
           }
+
+          else if (selectedRole === 'professional') {
+            try {
+              const result = await contract.methods.getProfessionalDetails(userID).call();
+              if(result[2]==walletAddress){
+                const result = await web3.eth.personal.sign("User Logged In", walletAddress, '');
+                if(result){nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });}}                
+              else{alert("Incorrect access role or user ID. Please check again.")}
+              
+              setIsLoading(false)
+            } catch (error) {
+              console.error('Error fetching patient details:', error);
+              // Handle the error appropriately (e.g., show an error message)
+            }
+          }
       
           // Navigate to the dashboard page with user ID and selected role in the state
           //nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });
