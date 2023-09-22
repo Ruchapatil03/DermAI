@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { Magic } from "magic-sdk";
 import ContractABI from '../ABI/RevisedABI.json';
 
-export const magicProvider = new Magic('pk_live_458EA07ABE8ADAEA', {
+export const magicProvider = new Magic('YOUR_PUBLIC_KEY', {
     network: {
       rpcUrl: 'https://sepolia.infura.io/v3/YOUR_PROJECT_ID',
       chainId: 11155111,
