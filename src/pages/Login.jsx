@@ -115,7 +115,9 @@ const Login = () => {
                 <center>
                  <span>LOGIN</span>
                 </center>
-                
+                <center>
+                  <a href="/Signup" style={{fontSize:'2.5vh',color:'whitesmoke'}}>Click here to get started with DermAI!</a>
+                </center>
                 <form  className="form1">
 
                     <div>

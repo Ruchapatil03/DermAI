@@ -62,6 +62,7 @@
     width: 100vw;
     display: flex;
     background-size: cover;
+    overflow: hidden;
 }
 
 .imgdiv06{
@@ -121,4 +122,18 @@
     font-size: 7vh;
     font-weight: 400;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.358);
+}
+.but .start{
+    background-color: beige;
+    color: black;
+    border-radius: 1vh;
+    height: 6vh;
+    width: 6vw;
+    border: none;
+    position: absolute;
+    top: 2vh;
+    left: 89vw;
+    font-size: 3vh;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.267);
+    cursor: pointer;
 }

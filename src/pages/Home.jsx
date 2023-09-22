@@ -39,9 +39,14 @@ const Home = () => {
         <div className='imgdiv06' data-aos="slide-up" data-aos-delay="900" data-aos-duration="700"><img src={didi3} alt="" className='img06'/></div>
         <p className='heading06' data-aos="zoom-in" data-aos-delay="1500" data-aos-duration="400">DermAI</p>
       </div>
+      <div className="but">
+        <a href="/Login"><button className='start'> LOGIN </button></a>
+        
+      </div>
     </section>
+      
 
-    <section>
+    {/* <section>
     <div className="container07">
         <div className='heading07' data-aos="slide-right" data-aos-duration="800">
           <p>Get diagnosed in 3 easy steps !</p>
@@ -67,7 +72,7 @@ const Home = () => {
       <div className="container08">
         <h1>What we do</h1>
       </div>
-    </section>
+    </section> */}
     </>
   );
 }
