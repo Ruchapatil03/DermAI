@@ -69,19 +69,12 @@ function HelloWorld (){
 
     return (
         <div>
-            <h1>Hello, World! Smart Contract</h1>
-            <p>Current Message: {message}</p>
-            <input
-                type="text"
-                placeholder="New Message"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-            />
-            <button onClick={setMessageOnContract} disabled={loading}>
-                {loading ? 'Setting...' : 'Set Message'}
-            </button>
+          {accounts.map((account, index) => (
+            <div key={index}>Account {index + 1}: {account}</div>
+          ))}
         </div>
-    );
+      );
+      
 }
 
 export default HelloWorld;

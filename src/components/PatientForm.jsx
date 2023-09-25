@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Web3Storage } from 'web3.storage';
 import DermAIABI from "../ABI/RevisedABI.json"
 import Web3 from 'web3';
+import LoadingComponent from './loadingComponent';
 
 const contractAddress = '0x002117753C9b143699e6094a5553DD9403087bC8';
 
@@ -18,10 +19,12 @@ function PatientForm() {
   const fileInputRef = useRef(null);
   const [vehicleDetailsHash, setVehicleDetailsHash] = useState('');
   const [isFileSubmitted, setIsFileSubmitted] = useState(false);
-
+  const [loading,setLoading] = useState(false);
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState([]);
   const [contract, setContract] = useState(null);
+  const [errorMessage,setErrorMessage] = useState('');
+  const [web3Message, setWeb3Message] = useState('');
 
   useEffect(() => {
     const initialize = async () => {
@@ -29,10 +32,11 @@ function PatientForm() {
       if (typeof window.ethereum !== 'undefined') {
         try {
           // Request account access
+          setLoading(true);
           await window.ethereum.request({ method: 'eth_requestAccounts' });
           const web3 = new Web3(window.ethereum);
           setWeb3(web3);
-
+          setLoading(false);
           // Get the user's accounts
           const accounts = await web3.eth.getAccounts();
           setAccounts(accounts);
@@ -42,9 +46,10 @@ function PatientForm() {
           setContract(contract);
         } catch (error) {
           console.error('Error initializing Web3:', error);
-          alert(
-            'An error occurred while initializing Web3. Please make sure you have MetaMask installed and try again.'
-          );
+          if (error.code === 4001) {
+            setWeb3Message('Please refresh and connect to Metamask.');
+            setLoading(false);
+            }
         }
       } else {
         console.log('Please install MetaMask!');
@@ -129,7 +134,7 @@ function PatientForm() {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+      {!web3Message && !loading?(<form onSubmit={handleSubmit}>
       <div>
         <label>Upload your Diagnosis History:</label>
         <br />
@@ -154,7 +159,9 @@ function PatientForm() {
   letterSpacing: '0.1vw'
 }}
 onClick={handleSubmit}>SUBMIT</button>
-    </form>
+    </form>):(<div>{!loading&&(<p style={{fontWeight:'700',fontSize:'x-large',color:'white',marginTop:'30vh',textAlign:'center'}}>{web3Message}</p>)}</div>)}
+      {loading && (<LoadingComponent/>)}
+        
     
 
 

@@ -53,9 +53,9 @@ function CommonDashboard() {
               setContract(contract);
               setIsLoading(true);
               let result;
-              if(selectedRole=='patient'){result = await contract.methods.getPatientDetails(userID).call(); await retrieveJSONFile(result[3]);}
-              else if(selectedRole=='professional'){result = await contract.methods.getProfessionalDetails(userID).call();await retrieveJSONFile(result[3]);}
-              setCounter(result[5].length);
+              if(selectedRole=='patient'){result = await contract.methods.getPatientDetails(userID).call(); await retrieveJSONFile(result[3]);setCounter(result[5].length);}
+              else if(selectedRole=='professional'){result = await contract.methods.getProfessionalDetails(userID).call();await retrieveJSONFile(result[3]);;setCounter(result[4].length);}
+              
 
               async function retrieveJSONFile(cid) {
                 const client = makeStorageClient();

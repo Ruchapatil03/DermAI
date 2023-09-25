@@ -19,9 +19,12 @@ const SignUp = () => {
       <section className='secmain'>
         <div className="outer">
           <div className="formsection">
-            <center>
+            <center style={{marginTop:"-3vh"}}>
               <span>SIGNUP</span>
             </center>
+            <center style={{display:'flex',flexDirection:'row',marginTop:"-1vh"}}>
+                  <p>Already a member?</p><a href="/login" style={{fontSize:'2.5vh',color:'#0E21A0',marginLeft:'0.5vw',fontWeight:'700'}}>LOGIN</a>
+                </center>
             <Outlet/> {/* Render role-specific form content here */}
           </div>
           <div className="imagecontent">

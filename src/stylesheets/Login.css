@@ -9,6 +9,7 @@
 }
 .sec1{
     background: rgb(6,79,153);
+    
     background: linear-gradient(36deg, rgba(6,79,153,0.9220938375350141) 30%, rgba(111,165,207,0.9192927170868347) 60%, rgba(195,233,251,0.9248949579831933) 86%);
     background-size: cover;
     display: flex;
@@ -21,6 +22,7 @@
 .outer1{
     height: 68vh;
     width: 60vw;
+    
     display: flex;
     flex-direction: row;
     align-items: center;    
@@ -35,7 +37,8 @@
     flex-direction: column;
     align-items: center;
     height: 70vh;
-    width: 28vw;
+    width: 35vw;
+    
     margin:15vh 0 0 4vw;
 }
 .outer1 .formsection1 span{

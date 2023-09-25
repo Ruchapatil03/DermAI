@@ -5,6 +5,8 @@ import "../stylesheets/Login.css";
 import DermAIABI from '../ABI/RevisedABI.json';
 import ig from "../assets/Login/logimg.png";
 import Web3 from 'web3';
+import LoadingComponent from '../components/loadingComponent';
+import ErrorModal from '../components/ErrorModal';
 
 import { Web3Storage } from 'web3.storage';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +18,17 @@ const Login = () => {
 
     const nav = useNavigate();
     const [isLoading,setIsLoading] = useState(false);
+    const [loading,setLoading] = useState(false);
+    const [errorMessage,setErrorMessage] = useState('');
+    const [web3Message, setWeb3Message] = useState('');
+    const [web3, setWeb3] = useState(null);
+    const [accounts, setAccounts] = useState([]);
+    const [contract, setContract] = useState(null);
+    const [walletAddress,setWalletAddress] = useState('');
+    const [selectedRole, setSelectedRole] = useState('');
+    const [userID, setUserID] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+
 
     
 
@@ -30,7 +43,9 @@ const Login = () => {
               if(result[2]==walletAddress){
                 const result = await web3.eth.personal.sign("User Logged In", walletAddress, '');
                 if(result){nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });}}                
-              else{alert("Incorrect access role or user ID. Please check again.")}
+              else{
+                
+                alert("Incorrect access role or user ID. Please check again.")}
               
               setIsLoading(false)
             } catch (error) {
@@ -42,11 +57,12 @@ const Login = () => {
           else if (selectedRole === 'professional') {
             try {
               const result = await contract.methods.getProfessionalDetails(userID).call();
-              if(result[2]==walletAddress){
-                const result = await web3.eth.personal.sign("User Logged In", walletAddress, '');
-                if(result){nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });}}                
-              else{alert("Incorrect access role or user ID. Please check again.")}
-              
+              console.log(result);
+              if(result[1]==walletAddress){
+                const res = await web3.eth.personal.sign("User Logged In", walletAddress, '');
+                if(res){nav(`/dash/${selectedRole}/${selectedRole}`, { state: { userID, selectedRole } });}}                
+              else{ setModalVisible(true);}
+             
               setIsLoading(false)
             } catch (error) {
               console.error('Error fetching patient details:', error);
@@ -61,12 +77,7 @@ const Login = () => {
       
       
 
-    const [web3, setWeb3] = useState(null);
-    const [accounts, setAccounts] = useState([]);
-    const [contract, setContract] = useState(null);
-    const [walletAddress,setWalletAddress] = useState('');
-    const [selectedRole, setSelectedRole] = useState('');
-    const [userID, setUserID] = useState('');
+    
 
   useEffect(() => {
     const initialize = async () => {
@@ -74,9 +85,11 @@ const Login = () => {
       if (typeof window.ethereum !== 'undefined') {
         try {
           // Request account access
+          setLoading(true);
           await window.ethereum.request({ method: 'eth_requestAccounts' });
           const web3 = new Web3(window.ethereum);
           setWeb3(web3);
+          setLoading(false);
           const contract = new web3.eth.Contract(DermAIABI, contractAddress);
           setContract(contract);
           // Get the user's accounts
@@ -89,9 +102,10 @@ const Login = () => {
         //   setContract(contract);
         } catch (error) {
           console.error('Error initializing Web3:', error);
-          alert(
-            'An error occurred while initializing Web3. Please make sure you have MetaMask installed and try again.'
-          );
+          if (error.code === 4001) {
+            setWeb3Message('Please refresh and connect to Metamask.');
+            setLoading(false);
+            }// alert(
         }
       } else {
         console.log('Please install MetaMask!');
@@ -108,17 +122,19 @@ const Login = () => {
     setSelectedRole(value);
   };
   return (
-    <>
-    <section className='sec1'>
+    <div>    
+    
+    <section className='sec1'>  
         <div className="outer1">
             <div className="formsection1">
                 <center>
                  <span>LOGIN</span>
                 </center>
-                <center>
-                  <a href="/Signup" style={{fontSize:'2.5vh',color:'whitesmoke'}}>Click here to get started with DermAI!</a>
+                <center style={{display:'flex',flexDirection:'row'}}>
+                  <p>Not a member yet?</p><a href="/Signup" style={{fontSize:'2.5vh',color:'#0E21A0',marginLeft:'0.5vw',fontWeight:'700'}}>SIGNUP</a>
                 </center>
-                <form  className="form1">
+
+                {!web3Message && !loading?(<form  className="form1">
 
                     <div>
                         <label>MetaMask ID:</label>
@@ -141,21 +157,26 @@ const Login = () => {
                     </div>
 
                     <center>
-                        <button onClick={goToDash} >
+                        <button onClick={goToDash} style={{marginTop:'1vh'}} >
                         SUBMIT
                         </button>
                         {/* <input type="submit" className='submit'/> */}
                     </center>
-                </form>
+                </form>):(<div style={{marginTop:"-15vh"}}>{!loading&&(<p style={{fontWeight:'700',fontSize:'x-large',color:'white',marginTop:'30vh',textAlign:'center'}}>{web3Message}</p>)}</div>)}
+                {loading && (<LoadingComponent/>)}
+
+
+                
             </div>
             <div className="imagecontent1">
                 <img src={ig} alt="" /> 
             </div>
             
+  
         </div>
     </section>
         
-    </>
+    </div>
   );
 }
 
