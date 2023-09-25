@@ -10,6 +10,6 @@ export const magicProvider = new Magic('YOUR_PUBLIC_KEY', {
   });
 
 const provider = await magicProvider.wallet.getProvider();
-export const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
+export const contractAddress = '0x002117753C9b143699e6094a5553DD9403087bC8';
 export const web3 = new Web3(provider);
 export const contractInstance = new web3.eth.Contract(ContractABI, contractAddress);

@@ -8,7 +8,7 @@ import Web3 from 'web3';
 import { Form, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
+const contractAddress = '0x002117753C9b143699e6094a5553DD9403087bC8';
 
 function getAccessToken() {
   return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5NTg0QzFjYjQ1QzczMTQwODQ3RjY2NjBkQ0Y5MzNjODNBM2NFMjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTUxMjAxNDc5MjEsIm5hbWUiOiJ1c2VyUHJvZmlsZVNJSCJ9.vVWHthR6rySB1W48_oO_vjHBF36_3Pm9ljHRIpZviDE";

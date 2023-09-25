@@ -28,7 +28,7 @@ DermAI is a blockchain-based application that enables users to obtain preliminar
 
 Deployment Network - Sepolia Testnet
 
-Contract Address: 0x6E6FD340FD7BE37e06888824f9F13CC010A93D12;
+Contract Address: 0x002117753C9b143699e6094a5553DD9403087bC8;
 
 ## 🔍 Future Scope
 - Implement [Magic Auth](https://magic.link/docs/home/welcome) functions for Walletless Onboarding.

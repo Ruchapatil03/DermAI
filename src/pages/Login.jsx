@@ -9,7 +9,7 @@ import Web3 from 'web3';
 import { Web3Storage } from 'web3.storage';
 import { useNavigate } from 'react-router-dom';
 
-const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
+const contractAddress = '0x002117753C9b143699e6094a5553DD9403087bC8';
 
 
 const Login = () => {

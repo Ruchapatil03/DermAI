@@ -3,7 +3,7 @@ import React, {useState,useEffect} from "react";
 import Web3 from 'web3';
 import DermAIABI from '../ABI/RevisedABI.json';
 import { Web3Storage } from 'web3.storage';
-const contractAddress = '0x6E6FD340FD7BE37e06888824f9F13CC010A93D12';
+const contractAddress = '0x002117753C9b143699e6094a5553DD9403087bC8';
 import { useLocation } from "react-router-dom";
 // import { set } from "lodash";
 
